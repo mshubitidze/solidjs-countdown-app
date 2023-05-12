@@ -14,9 +14,8 @@ const App: Component = () => {
     onCleanup(() => clearInterval(interval));
   });
 
-  const leftPad = (time: number, place: number, ch: string) => {
-    const s = time.toString();
-    return s.length < place ? ch.repeat(place - s.length) + s : s;
+  const leftPad = (n: number, p: number, ch: string) => {
+    return n.toLocaleString().padStart(p, ch);
   };
 
   const formatCountdown = (remainingTime: number) => {
@@ -38,9 +37,7 @@ const App: Component = () => {
     );
   };
 
-  const remainingTime = () => {
-    return destination - currentDate();;
-  };
+  const remainingTime = () => destination - currentDate();
 
   return (
     <main class="gap-4 select-none bg-indigo-900 flex items-center justify-center flex-col h-screen text-indigo-200">
