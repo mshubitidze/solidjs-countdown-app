@@ -14,10 +14,9 @@ const App: Component = () => {
     onCleanup(() => clearInterval(interval));
   });
 
-  const leftPad = (s: number, place: number, ch: string) => {
-    return s.toString().length < place
-      ? ch.repeat(place - s.toString().length) + s
-      : s;
+  const leftPad = (time: number, place: number, ch: string) => {
+    const s = time.toString();
+    return s.length < place ? ch.repeat(place - s.length) + s : s;
   };
 
   const formatCountdown = (remainingTime: number) => {
@@ -39,12 +38,18 @@ const App: Component = () => {
     );
   };
 
-  const remainingTime = () => destination - currentDate();
+  const remainingTime = () => {
+    return destination - currentDate();;
+  };
 
   return (
     <main class="gap-4 select-none bg-indigo-900 flex items-center justify-center flex-col h-screen text-indigo-200">
       <p class="text-3xl md:text-6xl">
-        {() => formatCountdown(remainingTime())}
+        {remainingTime() > 0 ? (
+          () => formatCountdown(remainingTime())
+        ) : (
+          <div>Happy Birthday!</div>
+        )}
       </p>
     </main>
   );
