@@ -24,7 +24,7 @@ const App: Component = () => {
     const seconds = leftPad(Math.round(remainingTime % 60));
     const minutes = leftPad(Math.floor((remainingTime / 60) % 60));
     const hours = leftPad(Math.floor((remainingTime / 3600) % 24));
-    const days = Math.floor(remainingTime / 86400);
+    const days = leftPad(Math.floor(remainingTime / 86400));
 
     return (
       <div class="flex flex-row items-center justify-center gap-4">
