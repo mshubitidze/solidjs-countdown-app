@@ -4,7 +4,7 @@ const App: Component = () => {
   const [currentDate, setCurrentDate] = createSignal(
     Math.floor(Date.now() / 1000)
   );
-  const destination = Math.floor(new Date("2023-10-20").getTime() / 1000);
+  const destination = Math.floor(new Date("2023-07-03").getTime() / 1000);
 
   createEffect(() => {
     const interval = setInterval(() => {
