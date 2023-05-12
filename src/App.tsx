@@ -14,17 +14,17 @@ const App: Component = () => {
     onCleanup(() => clearInterval(interval));
   });
 
-  const leftPad = (s: number) => {
-    return s.toString().length < 2
-      ? "0".repeat(2 - s.toString().length) + s
+  const leftPad = (s: number, place: number, ch: string) => {
+    return s.toString().length < place
+      ? ch.repeat(place - s.toString().length) + s
       : s;
   };
 
   const formatCountdown = (remainingTime: number) => {
-    const seconds = leftPad(Math.round(remainingTime % 60));
-    const minutes = leftPad(Math.floor((remainingTime / 60) % 60));
-    const hours = leftPad(Math.floor((remainingTime / 3600) % 24));
-    const days = leftPad(Math.floor(remainingTime / 86400));
+    const seconds = leftPad(Math.round(remainingTime % 60), 2, "0");
+    const minutes = leftPad(Math.floor((remainingTime / 60) % 60), 2, "0");
+    const hours = leftPad(Math.floor((remainingTime / 3600) % 24), 2, "0");
+    const days = leftPad(Math.floor(remainingTime / 86400), 3, "0");
 
     return (
       <div class="flex flex-row items-center justify-center gap-4">
