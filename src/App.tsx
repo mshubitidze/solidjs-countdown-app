@@ -42,11 +42,9 @@ const App: Component = () => {
   return (
     <main class="gap-4 select-none bg-indigo-900 flex items-center justify-center flex-col h-screen text-indigo-200">
       <p class="text-3xl md:text-6xl">
-        {remainingTime() > 0 ? (
-          () => formatCountdown(remainingTime())
-        ) : (
-          <div>Happy Birthday!</div>
-        )}
+        {remainingTime() > 0
+          ? () => formatCountdown(remainingTime())
+          : "Happy Birthday!"}
       </p>
     </main>
   );
