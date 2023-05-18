@@ -1,9 +1,7 @@
 import { Component, createSignal, createEffect, onCleanup } from "solid-js";
 
 const App: Component = () => {
-  const [currentDate, setCurrentDate] = createSignal(
-    Math.floor(Date.now() / 1000)
-  );
+  const [currentDate, setCurrentDate] = createSignal(Math.floor(Date.now() / 1000));
   const bday = Math.floor(new Date("2023-07-03").getTime() / 1000);
 
   createEffect(() => {
@@ -40,11 +38,9 @@ const App: Component = () => {
   const remainingTime = () => bday - currentDate();
 
   return (
-    <main class="gap-4 select-none bg-indigo-900 flex items-center justify-center flex-col h-screen text-indigo-200">
+    <main class="gap-4 select-none bg-violet-950 flex items-center justify-center flex-col h-screen text-cyan-300">
       <p class="text-3xl md:text-6xl">
-        {remainingTime() > 0
-          ? () => formatCountdown(remainingTime())
-          : "Happy Birthday!"}
+        {remainingTime() > 0 ? () => formatCountdown(remainingTime()) : "Happy Birthday!"}
       </p>
     </main>
   );
