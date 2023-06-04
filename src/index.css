@@ -2,6 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply bg-violet-950
+@layer base {
+  :root {
+    --background: 202 78% 23%;
+    --foreground: 186 45% 91%;
+ 
+    --border: 186 24% 61%;
+ 
+    --primary: 202 78% 23%;
+    --primary-foreground: 186 45% 91%;
+    
+    --accent: 358 100% 68%;
+ 
+    --radius: 0.5rem;
+  }
+}
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
