@@ -1,10 +1,9 @@
-import { createSignal } from "solid-js";
 import { inDifferentLanguages } from "../config/data";
+import { createSignal, createEffect, onCleanup, Component } from "solid-js";
 
-const RotatinginDifferentLanguages = () => {
-  const [currentSet, setCurrentSet] = createSignal<string[]>(
-    inDifferentLanguages.slice(17, 22)
-  );
+const RotatinginDifferentLanguages: Component<{}> = ({}) => {
+  const [currentSet, setCurrentSet] = createSignal<string[]>([]);
+  const NUMBER_OF_MESSAGES = 2
 
   const getRandomStrings = (arr: string[], num: number) => {
     const randomStrings = [];
@@ -15,17 +14,21 @@ const RotatinginDifferentLanguages = () => {
     return randomStrings;
   };
 
-  setInterval(() => {
-    const randomStrings = getRandomStrings(inDifferentLanguages, 5);
-    setCurrentSet(randomStrings);
-  }, 2500);
+  createEffect(() => {
+    const interval = setInterval(() => {
+      const randomStrings = getRandomStrings(inDifferentLanguages, NUMBER_OF_MESSAGES);
+      setCurrentSet(randomStrings);
+    }, 2000);
+
+    onCleanup(() => clearInterval(interval));
+  });
 
   return (
     <div class="flex flex-col gap-2 md:gap-10 items-center justify-center">
       {currentSet().map((hbd, i) => (
         <>
           <p class="align-middle text-lg md:text-4xl">{hbd}</p>
-          {i !== 4 && <div class="w-full h-0 border-accent border-b"></div>}
+          {i !==  NUMBER_OF_MESSAGES - 1 && <div class="w-full h-0 border-accent border-b-[1.5px]"></div>}
         </>
       ))}
     </div>

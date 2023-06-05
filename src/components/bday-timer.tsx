@@ -1,7 +1,7 @@
 import { Component, createSignal, createEffect, onCleanup } from "solid-js";
 import HappyBirthday from "./happy-birthday";
 
-const BdayTimer: Component = () => {
+const BdayTimer: Component<{}> = ({}) => {
   const [currentDate, setCurrentDate] = createSignal(
     Math.floor(Date.now() / 1000)
   );
