@@ -16,6 +16,17 @@
  
     --radius: 0.5rem;
   }
+  .dark {
+    --background: 186 45% 91%;
+    --foreground: 202 78% 23%;
+ 
+    --border: 186 24% 61%;
+ 
+    --primary: 186 45% 91%;
+    --primary-foreground: 202 78% 23%;
+    
+    --accent: 358 100% 68%;
+  }
 }
  
 @layer base {

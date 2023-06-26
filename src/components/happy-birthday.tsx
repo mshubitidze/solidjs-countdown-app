@@ -3,16 +3,11 @@ import { createSignal, createEffect, onCleanup, Component } from "solid-js";
 
 const RotatinginDifferentLanguages: Component<{}> = ({}) => {
   const [currentSet, setCurrentSet] = createSignal<string[]>([]);
-  const NUMBER_OF_MESSAGES = 2;
+  const NUMBER_OF_MESSAGES = 3;
 
-  const getRandomStrings = (arr: string[], num: number) => {
-    const randomStrings = [];
-    const shuffled = arr.sort(() => 0.5 - Math.random());
-    for (let i = 0; i < num; i++) {
-      randomStrings.push(shuffled[i]);
-    }
-    return randomStrings;
-  };
+  function getRandomStrings(arr: string[], num: number) {
+    return arr.sort(() => 0.5 - Math.random()).slice(0, num);
+  }
 
   createEffect(() => {
     const interval = setInterval(() => {
