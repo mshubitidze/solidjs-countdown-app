@@ -2,7 +2,9 @@ import { inDifferentLanguages } from "../config/data";
 import { createSignal, createEffect, onCleanup, Component } from "solid-js";
 
 const RotatinginDifferentLanguages: Component<{}> = ({}) => {
-  const [currentSet, setCurrentSet] = createSignal<string[]>([]);
+  const [currentSet, setCurrentSet] = createSignal<string[]>(
+    inDifferentLanguages.slice(0, 3)
+  );
   const NUMBER_OF_MESSAGES = 3;
 
   function getRandomStrings(arr: string[], num: number) {
